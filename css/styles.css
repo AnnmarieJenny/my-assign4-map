@@ -1,0 +1,47 @@
+
+.master-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 300px;
+  height: 100%;
+  background-color: #016c59;
+}
+
+#map-container {
+  height: 100%;
+  flex: 1;
+}
+
+.title{
+  display: inline-block;
+    color: #fff;
+    font-weight: 600;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 33px;
+    margin-left: 20px;
+    width: 80%;
+}
+
+.bodytext{
+  color:#fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  text-align:left;
+  margin-left: 20px;
+  margin-right:20px;
+  display: block;
+}
+
+a {
+  color:#6cace4;
+}
+
+/*the code below is from Chris Whong */
+html, body {
+  margin: 0;
+}
+html, body, .master-container, .sidebar, #mapcontainer {
+  height: 100%;
+}
