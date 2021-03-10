@@ -42,21 +42,6 @@ var VacantID = null;
 map.on('mousemove', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
 
-  /*var coordinates = e.features[0].geometry.coordinates();
-  var zone = e.features[0].properties.ZoneDist1;
-
-  // Ensure that if the map is zoomed out such that multiple
-  // copies of the feature are visible, the popup appears
-  // over the copy being pointed to.
-  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-  }
-
-  // Populate the popup and set its coordinates
-  // based on the feature found.
-  popup.setLngLat(coordinates).setHTML(zone).addTo(map);
-});*/
-
 map.on('mouseleave', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = '';
 })
@@ -65,9 +50,6 @@ map.on('mouseleave', 'pluto-vacant-fill', (e) => {
     new mapboxgl.Popup()
         .setLngLat(coordinates)
     });
-
-
-
 
   // add a layer to style and display the addSource
 
