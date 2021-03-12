@@ -1,6 +1,5 @@
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5ubWFyaWVqZW5ueSIsImEiOiJja2w4NGUycWMydHVnMnBwbGtwYTd2bDdsIn0.nw5eYr-3jZj6cS7lDUIFMg';
-
 var map = new mapboxgl.Map ({
     container: 'map-container',
     style: 'mapbox://styles/mapbox/dark-v10',
@@ -8,36 +7,45 @@ var map = new mapboxgl.Map ({
     zoom: 10.5
 });
 
-var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'top-left');
-
-map.on('style.load', function(){
-  // add a geojson source
-    map.addSource('nyc_vacant_lots_pluto', {
-      type: 'geojson',
-      data: '/data/pluto-map.geojson'
-  });
-
-  map.addLayer({
-    'id': 'pluto-vacant-fill',
-    'type': 'fill',
-    'source': 'nyc_vacant_lots_pluto',
-    'layout': {},
-    'paint': {
-      'fill-color': '#088',
-      'fill-opacity': 0.8
-    }
-  });
-
-  map.addControl(
-  new MapboxGeocoder({
+// add in address search bar
+map.addControl(
+new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl
   })
 );
-})
 
-var VacantID = null;
+//add in map zoom in and zoom out feature
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
+
+// add data for layer (vacant lots)
+map.on('style.load', function(){
+  // add a geojson source
+map.addSource('nyc_vacant_lots_pluto', {
+      type: 'geojson',
+      data: '/data/pluto-map-qgisedited.geojson'
+  });
+
+//specify info for layer to be projected from data
+map.addLayer({
+  'id': 'pluto-vacant-fill', // for future reference
+  'type': 'fill',
+  'source': 'nyc_vacant_lots_pluto',//same as above
+  'layout': {},
+  'paint': {
+    'fill-color': '#088',
+    'fill-outline-color': '#96dfe3',
+    'fill-opacity': 0.8
+    }
+  });
+
+/*map.on('click', 'pluto-vacant-fill', function (e) {
+  new mapboxgl.Popup()
+    .setLngLat(e.coordinates)
+    .setHTML(e.features[0].properties.name)
+    .addTo(map);
+  });*/
 
 map.on('mousemove', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
@@ -46,10 +54,11 @@ map.on('mouseleave', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = '';
 })
 
+//var VacantID = null; // << what did this do again?
 
-    new mapboxgl.Popup()
-        .setLngLat(coordinates)
-    });
+new mapboxgl.Popup()
+  .setLngLat(coordinates)
+});
 
   // add a layer to style and display the addSource
 
@@ -68,8 +77,6 @@ map.on('mouseleave', 'pluto-vacant-fill', (e) => {
     closeButton: false,
     closeOnClick: false,
   });*/
-
-
 
 /*map.on('style.load', function(){
   // add a geojson source
@@ -110,3 +117,5 @@ map.on('mouseleave', 'pluto-vacant-fill', (e) => {
     }
   });
 })*/
+
+})

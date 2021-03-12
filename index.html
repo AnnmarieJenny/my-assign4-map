@@ -9,22 +9,29 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
-  <body>
-    <div class='master-container'>
-        <div class='sidebar'>
+
+<body>
+  <div class='master-container'>
+      <div class='sidebar'>
          <!--<div class='heading'>...why have this as well as sidebar?-->
-          <h1 class='title'> Publicly-Owned Vacant Lots in <br> New York City</br>
-            </h1>
-              <p class ='bodytext'> This map seeks to identify publicly-owned vacant lots in NYC. It currently uses the NYC PLUTO Dataset.
+        <h1 class='title'> Publicly-Owned Vacant Lots in <br> New York City</br>
+          </h1>
+            <p class ='bodytext'> This map seeks to identify publicly-owned vacant lots in NYC. It currently uses the NYC PLUTO Dataset.
                 One might note the odd prevalence of vacant lots displayed on the map.
                 To remedy this, this map will soon incorporate data from <a href="https://data.cityofnewyork.us/Housing-Development/Vacant-Publicly-Owned-Land/c8vj-e9jc">NYC OpenData</a>.
                 This will provide the map with more avenues to refine the filter so the map only shows currently vacant, publicly-owned lots.</p>
-                <p  class = "bodytext"><i>*Please note this map displays only a rough estimation of vacant lots and requires further cleaning to ensure accuracy.</i></p>
-                <p class= "bodytext">For more information on this dataset, visit
-                    <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto">NYC PLUTO</a>
-      </div>
-      <div id='map-container'></div>
+              <p  class = "bodytext"><i>*Please note this map displays only a rough estimation of vacant lots and requires further cleaning to ensure accuracy.</i></p>
+              <p class= "bodytext">For more information on this dataset, visit
+                  <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto">NYC PLUTO</a>
     </div>
+<div id='map-container'></div>
+  </div>
+<style>
+  .mapboxgl-popup {
+  max-width: 400px;
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+</style>
 <script
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
   <!-- load mapbox with jquery using a script tag -->
@@ -34,5 +41,6 @@
     crossorigin="anonymous"></script>
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
   <script src="js/scripts.js"></script>
+
 </body>
 </html>
