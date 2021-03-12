@@ -20,7 +20,7 @@ var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left');
 
 // add data for layer (vacant lots)
-map.on('style.load', function(){
+map.on('load', function(){ // was 'style.load' before
   // add a geojson source
 map.addSource('nyc_vacant_lots_pluto', {
       type: 'geojson',
@@ -40,12 +40,12 @@ map.addLayer({
     }
   });
 
-/*map.on('click', 'pluto-vacant-fill', function (e) {
+map.on('click', 'pluto-vacant-fill', function (e) {
   new mapboxgl.Popup()
     .setLngLat(e.coordinates)
-    .setHTML(e.features[0].properties.name)
+    .setHTML(e.features[0].properties.OwnerName)
     .addTo(map);
-  });*/
+  });
 
 map.on('mousemove', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
