@@ -1,5 +1,6 @@
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5ubWFyaWVqZW5ueSIsImEiOiJja2w4NGUycWMydHVnMnBwbGtwYTd2bDdsIn0.nw5eYr-3jZj6cS7lDUIFMg';
+
 var map = new mapboxgl.Map ({
     container: 'map-container',
     style: 'mapbox://styles/mapbox/dark-v10',
@@ -20,28 +21,26 @@ var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left');
 
 // add data for layer
-// add funciton (VacantLots) to connect data to properties below
-map.on('load', function(){ // was 'style.load' before
-  // add a geojson source
+map.on('load', function(){
+// add a geojson source
 map.addSource('nyc_vacant_lots_pluto', {
-      type: 'geojson',
-      data: 'data/pluto-map-qgisedited.geojson'
+    type: 'geojson',
+    data: 'data/vacant-lots-joined.geojson' //was pluto-map-qgisedited
   });
 
 //specify info for layer to be projected from data
 map.addLayer({
-  'id': 'pluto-vacant-fill', // for future reference
+  'id': 'pluto-vacant-fill',
   'type': 'fill',
-  'source': 'nyc_vacant_lots_pluto',//same as above
+  'source': 'nyc_vacant_lots_pluto',
   'layout': {},
   'paint': {
     'fill-color': '#088',
-//    'fill-outline-color': '#96dfe3',
     'fill-opacity': 0.8
     }
   });
 
-// create pop up with multiple properties listed above
+// create pop up with multiple properties listed below
  map.on('click', function (e) {
     var features = map.queryRenderedFeatures(e.point, {
       layers: ['pluto-vacant-fill']
@@ -58,11 +57,11 @@ map.addLayer({
       .addTo(map);
     });
 
-// turn pointer on when it hovers away from vacant lots geo
+// turn pointer on when it hovers over geos/vacant lots
 map.on('mouseenter', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
     })
-// turn pointer off when it hovers away from vacant lots geo
+// turn pointer off when it hovers away from geos/vacant lots
 map.on('mouseleave', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = '';
 })

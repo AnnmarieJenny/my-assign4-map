@@ -3,11 +3,6 @@
   display: flex;
 }
 
-/*#menu {
-  width:400px;
-  height: 20px;
-}*/
-
 .sidebar {
   width: 300px;
   height: 100%;
@@ -39,6 +34,7 @@
   display: block;
 }
 
+/* set color for hyperlinks*/
 a {
   color:#6cace4;
 }
