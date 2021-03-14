@@ -16,71 +16,28 @@
 </head>
 
 <body>
-<style>
-    #menu {
-        background: #fff;
-        position: absolute;
-        z-index: 1;
-        top: 10px;
-        right: 10px;
-        border-radius: 3px;
-        width: 120px;
-        border: 1px solid rgba(0, 0, 0, 0.4);
-        font-family: 'Open Sans', sans-serif;
-    }
 
-    #menu a {
-        font-size: 13px;
-        color: #404040;
-        display: block;
-        padding: 0;
-        padding: 10px;
-        text-decoration: none;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        text-align: center;
-    }
-
-    #menu a:last-child {
-        border: none;
-    }
-
-    #menu a:hover {
-        background-color: #f8f8f8;
-        color: #404040;
-    }
-
-    #menu a.active {
-        background-color: #3887be;
-        color: #ffffff;
-    }
-
-    #menu a.active:hover {
-        background: #3074a4;
-    }
-  </style>
-<!--set style for popups over the geographies (bbls) -->
-<style>
-  .mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  }
-</style>
 <!--set up containers to orient positioning of content within the webpage-->
-<!--<div id="map"></div>-->
+<div id="map"></div>
   <div class='master-container'>
       <div class='sidebar'>
         <!--write out text to go on the sidebar-->
         <h1 class='title'>Vacant Lots in <br> New York City</br></h1>
-            <p class ='bodytext'> This map displays a first look at vacant lots in New York City as derived from the PLUTO public dataset.
-                Click each geography for more information on that vacant lot. To gain further insight on these lots, use the bbl listed within
-                a given popup and visit this <a href = "https://a836-pts-access.nyc.gov/care/forms/htmlframe.aspx?mode=content/home.htm">NYC Building Lookup Page</a>
-                for more details.
-            <p  class = "bodytext"><i>*Please note this map displays only a rough estimation of vacant lots.</i></p>
-            <p class= "bodytext">For more information on this dataset, visit
-            <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto">NYC PLUTO</a>
-      </div>
+            <p class ='bodytext'> This map displays two sets of vacant lots in New York City, as listed below.
+              You can toggle between these two maps using the buttons on the upper right of the map. Click on a particular lot for more details.
+              You can only view lot details when one map is selected, not both.</p>
+            <p class = "bodytext"> <b>All Vacant Lots</b> is derived from
+              <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto">NYC PLUTO</a> and displays all lots designated as vacant by the city.
+              This includes some parks and other open space geographies.</p>
+            <p class = "bodytext"><b>Development Ready Vacant Lots</b> is derived from <a href = "https://data.cityofnewyork.us/Housing-Development/Vacant-Publicly-Owned-Land/c8vj-e9jc">NYC OpenData</a> and shows publicly-owned vacant lots more conducive to new development.</p>
+            <p class = "bodytext"> To gain further insight on these lots, use the BBL listed within a given pop-up and visit this <a href = "https://a836-pts-access.nyc.gov/care/forms/htmlframe.aspx?mode=content/home.htm">NYC Building Lookup Page</a>
+                for even more details.</p>
+            <p  class = "bodytext"><i>*Please note that these maps display rough estimations of vacant lots.*</i>
+              These maps build off of previous analysis work done on NYC vacant lots, viewable <a href = "https://wp.nyu.edu/urbanpracticecfp287/2019/08/16/mapping-vacant-land-in-nyc/">here</a>.</p>
 
+      </div>
       <div id='map-container'></div>
+      <nav id="menu"></nav>
   </div>
 
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
@@ -92,6 +49,5 @@
     <!--load mapbox with geocoder using a script tag-->
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
   <script src="js/scripts.js"></script>
-
 </body>
 </html>
