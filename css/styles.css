@@ -3,6 +3,11 @@
   display: flex;
 }
 
+/*#menu {
+  width:400px;
+  height: 20px;
+}*/
+
 .sidebar {
   width: 300px;
   height: 100%;

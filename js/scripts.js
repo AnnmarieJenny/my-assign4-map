@@ -21,7 +21,7 @@ map.addControl(nav, 'top-left');
 
 // add data for layer
 // add funciton (VacantLots) to connect data to properties below
-map.on('load', function(VacantLots){ // was 'style.load' before
+map.on('load', function(){ // was 'style.load' before
   // add a geojson source
 map.addSource('nyc_vacant_lots_pluto', {
       type: 'geojson',
@@ -36,35 +36,35 @@ map.addLayer({
   'layout': {},
   'paint': {
     'fill-color': '#088',
-    'fill-outline-color': '#96dfe3',
+//    'fill-outline-color': '#96dfe3',
     'fill-opacity': 0.8
     }
   });
 
-// use function (VacantLots) from above to create a var that pulls from that data
-var myHTML = `
-    <div><b>Address:</b>${VacantLots.Address}</div>
-    <div><b>Owner Name:</b>${VacantLots.OwnerName}</div>
-    <div><b>Assessment Value of Land:</b>${VacantLots.AssessLand}</div>
-    <div><b>BBL:</b>${VacantLots.bbl}</div>`
-
 // create pop up with multiple properties listed above
-map.on('click', 'pluto-vacant-fill', function (e) {
-  new mapboxgl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML(e.features[0].properties.myHTML)
-    .addTo(map);
-  });
+ map.on('click', function (e) {
+    var features = map.queryRenderedFeatures(e.point, {
+      layers: ['pluto-vacant-fill']
+    });
+    // use function (VacantLots) from above to create a var that pulls from that data
+    var myHTML = `
+        <div><b>Address: </b>${features[0].properties.Address}</div>
+        <div><b>Owner Name: </b>${features[0].properties.OwnerName}</div>
+        <div><b>BBL: </b>${features[0].properties.bbl}</div>
+        `
+    new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(myHTML)
+      .addTo(map);
+    });
 
-// turn mouse into pointer when it hovers over vacant lot geos
-map.on('mousemove', 'pluto-vacant-fill', (e) => {
+// turn pointer on when it hovers away from vacant lots geo
+map.on('mouseenter', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = 'pointer';
-
-// turn pointer off when it hovers away from vacant lot geos 
+    })
+// turn pointer off when it hovers away from vacant lots geo
 map.on('mouseleave', 'pluto-vacant-fill', (e) => {
   map.getCanvas().style.cursor = '';
 })
-
-});
 
 })

@@ -8,13 +8,12 @@
   <meta name="map-description" content="NYC Vacant Lots Map">
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="css/styles.css?v=1.0">
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
   <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   </style>
-  </head>
+</head>
 <body>
 <style>
   .mapboxgl-popup {
@@ -23,20 +22,20 @@ body { margin: 0; padding: 0; }
   }
 </style>
 <div id="map"></div>
-</head>
   <div class='master-container'>
       <div class='sidebar'>
          <!--<div class='heading'>...why have this as well as sidebar?-->
-        <h1 class='title'> Publicly-Owned Vacant Lots in <br> New York City</br>
+        <h1 class='title'>Vacant Lots in <br> New York City</br>
           </h1>
-            <p class ='bodytext'> This map seeks to identify publicly-owned vacant lots in NYC. It currently uses the NYC PLUTO Dataset.
-                One might note the odd prevalence of vacant lots displayed on the map.
-                To remedy this, this map will soon incorporate data from <a href="https://data.cityofnewyork.us/Housing-Development/Vacant-Publicly-Owned-Land/c8vj-e9jc">NYC OpenData</a>.
-                This will provide the map with more avenues to refine the filter so the map only shows currently vacant, publicly-owned lots.</p>
-              <p  class = "bodytext"><i>*Please note this map displays only a rough estimation of vacant lots and requires further cleaning to ensure accuracy.</i></p>
+            <p class ='bodytext'> This map displays a first look at vacant lots in New York City as derived from the PLUTO public dataset.
+                Click each geography for more information on that vacant lot. To gain further insight on these lots, use the bbl listed within
+                a given popup and visit this <a href = "https://a836-pts-access.nyc.gov/care/forms/htmlframe.aspx?mode=content/home.htm">NYC Building Lookup Page</a>
+                for more details.
+              <p  class = "bodytext"><i>*Please note this map displays only a rough estimation of vacant lots.</i></p>
               <p class= "bodytext">For more information on this dataset, visit
                   <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto">NYC PLUTO</a>
     </div>
+
 <div id='map-container'></div>
   </div>
 <script
