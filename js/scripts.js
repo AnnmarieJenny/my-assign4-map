@@ -102,7 +102,7 @@ layers.appendChild(link);
 // create pop up with multiple properties listed below
 map.on('click', function (e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['All Vacant Lots']
+    layers: ['All Vacant Lots', 'Development Ready Vacant Lots']
   });
   // use function (VacantLots) from above to create a var that pulls from that data
   var myHTML = `
@@ -116,22 +116,6 @@ map.on('click', function (e) {
     .addTo(map);
   });
 
-// create pop up with multiple properties listed below
-map.on('click', function (e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['Development Ready Vacant Lots']
-  });
-  // use function (VacantLots) from above to create a var that pulls from that data
-  var myHTML = `
-      <div><b>Address: </b>${features[0].properties.Address}</div>
-      <div><b>Owner Name: </b>${features[0].properties.OwnerName}</div>
-      <div><b>BBL: </b>${features[0].properties.bbl}</div>
-      `
-  new mapboxgl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML(myHTML)
-    .addTo(map);
-  });
 
 // turn pointer on when it hovers over geos/vacant lots
 map.on('mouseenter', 'All Vacant Lots', (e) => {
